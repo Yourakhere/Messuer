@@ -13,7 +13,7 @@ export const useChatStore = create((set, get) => ({
   getUsers: async () => {
     set({ isUsersLoading: true });
     try { 
-      const res = await axiosInstance.get("/messages/users"); // Change to match server route
+      const res = await axiosInstance.get("/messages/users"); 
       set({ users: res.data });
     } catch (error) {
       const errorMessage = error.response?.data?.message || "An unexpected error occurred.";

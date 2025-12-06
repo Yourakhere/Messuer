@@ -8,23 +8,27 @@ import messageRoutes from "./routes/message.route.js";
 
 import { connectDB } from "./lib/db.js";
 import {app,server} from "./lib/socket.js";
-
+ 
 dotenv.config(); 
   
 const PORT = process.env.PORT|| 5001;
 const __dirname = path.resolve();
-
+console.log("sd")
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(cookieParser());
 
+// app.use(cors({
+//   origin: "*",
+//    methods: ["GET", "POST", "PUT", "DELETE"],
+// }));
 app.use(cors({
   origin: "http://localhost:5173",
-  credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
 }));
 
+ 
 app.use("/api/auth", authRoutes); 
 app.use("/api/messages", messageRoutes);  
 
@@ -36,7 +40,7 @@ if(process.env.NODE_ENV==="production"){
   })
 }
 
-server.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Server running on port: ${PORT}`);
   connectDB();
 });
