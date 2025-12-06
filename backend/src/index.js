@@ -22,7 +22,7 @@ app.use(cookieParser());
 //    methods: ["GET", "POST", "PUT", "DELETE"],
 // }));
 app.use(cors({
-  origin: "https://chat-application-six-wheat.vercel.app",
+  origin: "*",
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
