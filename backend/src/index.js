@@ -6,11 +6,10 @@ import path from "path";
 import authRoutes from "./routes/auth.routes.js";  
 import messageRoutes from "./routes/message.route.js";
 
-import { connectDB } from "./lib/db.js";
-import {app,server} from "./lib/socket.js";
+import { connectDB } from "./lib/db.js"; 
  
 dotenv.config(); 
-  
+const app = express();
 const PORT = process.env.PORT|| 5001;
 const __dirname = path.resolve();
 console.log("sd")
@@ -44,3 +43,4 @@ app.listen(PORT, () => {
   console.log(`Server running on port: ${PORT}`);
   connectDB();
 });
+ 
