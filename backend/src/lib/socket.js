@@ -1,3 +1,64 @@
+import { Server } from "socket.io";
+
+let io;
+const userSocketMap = {}; // Store userId → socketId
+
+export const initializeSocket = (server) => {
+  io = new Server(server, {
+    cors: {
+      origin: "https://messuer.vercel.app",
+      credentials: true,
+    },
+  });
+
+  io.on("connection", (socket) => {
+    console.log("User connected:", socket.id);
+
+    const userId = socket.handshake.query.userId;
+
+    if (userId) {
+      userSocketMap[userId] = socket.id;
+    }
+
+    io.emit("getOnlineUsers", Object.keys(userSocketMap));
+
+    socket.on("disconnect", () => {
+      console.log("User disconnected:", socket.id);
+
+      for (const id in userSocketMap) {
+        if (userSocketMap[id] === socket.id) {
+          delete userSocketMap[id];
+          break;
+        }
+      }
+
+      io.emit("getOnlineUsers", Object.keys(userSocketMap));
+    });
+  });
+};
+
+export const getReceiverSocketId = (receiverId) => {
+  return userSocketMap[receiverId];
+};
+
+export { io };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // import { Server } from "socket.io";
 // import http from "http";
 // import express from "express";
@@ -34,59 +95,3 @@
 // });
 
 // export {io,app,server};
-
-
-
-
-
-
-
-
-
-
-
-
-import { Server } from "socket.io";
-
-let io;
-const userSocketMap = {}; // Store userId → socketId
-
-export const initializeSocket = (server) => {
-  io = new Server(server, {
-    cors: {
-      origin: "https://messuer-backend.onrender.com",
-      credentials: true,
-    },
-  });
-
-  io.on("connection", (socket) => {
-    console.log("User connected:", socket.id);
-
-    const userId = socket.handshake.query.userId;
-
-    if (userId) {
-      userSocketMap[userId] = socket.id;
-    }
-
-    io.emit("getOnlineUsers", Object.keys(userSocketMap));
-
-    socket.on("disconnect", () => {
-      console.log("User disconnected:", socket.id);
-
-      for (const id in userSocketMap) {
-        if (userSocketMap[id] === socket.id) {
-          delete userSocketMap[id];
-          break;
-        }
-      }
-
-      io.emit("getOnlineUsers", Object.keys(userSocketMap));
-    });
-  });
-};
-
-export const getReceiverSocketId = (receiverId) => {
-  return userSocketMap[receiverId];
-};
-
-export { io };
