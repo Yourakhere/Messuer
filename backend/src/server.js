@@ -22,7 +22,7 @@ app.use(cookieParser());
 //    methods: ["GET", "POST", "PUT", "DELETE"],
 // }));
 app.use(cors({
-  origin: "http://localhost:5173",//https://chat-application-six-wheat.vercel.app
+  origin: "https://messuer-backend.onrender.com",//https://chat-application-six-wheat.vercel.app
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
