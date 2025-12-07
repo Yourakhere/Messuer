@@ -4,7 +4,7 @@ A full-stack real-time chat application built using the **MERN stack**, **Socket
 Supports **1-to-1 messaging**, **image sharing**, **online users status**, and **persistent sessions** using cookies.
 
 ---
-Live link : https://messuer.vercel.app
+Live link : https://messuer.vercel.app  ,  https://yourchats.vercel.app/
 
 ## **🚀 Features**
 
