@@ -54,7 +54,7 @@ const userSocketMap = {}; // Store userId → socketId
 export const initializeSocket = (server) => {
   io = new Server(server, {
     cors: {
-      origin: "https://chat-application-six-wheat.vercel.app",
+      origin: "http://localhost:5173",
       credentials: true,
     },
   });
