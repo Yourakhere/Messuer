@@ -6,7 +6,7 @@ const userSocketMap = {}; // Store userId → socketId
 export const initializeSocket = (server) => {
   io = new Server(server, {
     cors: {
-      origin: "https://messuer.vercel.app",
+      origin: ["https://messuer.vercel.app","https://yourchats.vercel.app"],
       credentials: true,
       methods: ["GET", "POST"]
     },
