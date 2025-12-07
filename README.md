@@ -1,4 +1,4 @@
- # **Messer – MERN Realtime Chat Application**
+ # **Yourchats – MERN Realtime Chat Application**
 
 A full-stack real-time chat application built using the **MERN stack**, **Socket.io**, **Cloudinary**, and **JWT Authentication**.
 Supports **1-to-1 messaging**, **image sharing**, **online users status**, and **persistent sessions** using cookies.
