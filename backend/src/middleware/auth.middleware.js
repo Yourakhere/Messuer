@@ -6,9 +6,6 @@ dotenv.config();
 
 export const protectRoute = async (req, res, next) => {
     try {
-        console.log("All cookies:", req.cookies);
-        console.log("JWT cookie:", req.cookies.jwt);
-        
         const token = req.cookies.jwt;
 
         if (!token) {
