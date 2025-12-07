@@ -199,12 +199,7 @@ Use **Render**, **Railway**, **DigitalOcean**, or **AWS** for Socket.io server.
 
 ---
 
-## **📸 Screenshots**
-
-(Add screenshots here when ready)
-
----
-
+ 
 ## **🤝 Contributing**
 
 Pull requests are welcome.
