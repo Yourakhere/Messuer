@@ -8,6 +8,7 @@ export const initializeSocket = (server) => {
     cors: {
       origin: "https://messuer.vercel.app",
       credentials: true,
+      methods: ["GET", "POST"]
     },
   });
 
